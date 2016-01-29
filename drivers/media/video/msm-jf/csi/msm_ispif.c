@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2012,2014-2016 The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -257,6 +257,13 @@ static int msm_ispif_config(struct ispif_device *ispif,
 	int rc = 0, i = 0;
 	uint8_t intftype;
 	uint8_t vfe_intf;
+	
+	if (!ispif || !params_list ||
+		(params_list->len > ARRAY_SIZE(params_list->params))) {
+		pr_err("%s: null param or out of range length", __func__);
+		return -EINVAL;
+	}
+	
 	params_len = params_list->len;
 	ispif_params = params_list->params;
 	CDBG("Enable interface\n");
