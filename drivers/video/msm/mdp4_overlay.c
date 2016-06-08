@@ -3726,12 +3726,12 @@ int mdp4_overlay_set(struct fb_info *info, struct mdp_overlay *req)
 		return -ENODEV;
 	}
 
-	if (mdp_fb_is_power_off(mfd)) {
+//	if (mdp_fb_is_power_off(mfd)) {
 		/* suspended */
-		pr_err("%s,%d fb_%d panel type %d is suspended\n", __func__,
-				__LINE__, mfd->index, mfd->panel.type);
-		return -EINVAL;
-	}
+//		pr_err("%s,%d fb_%d panel type %d is suspended\n", __func__,
+//				__LINE__, mfd->index, mfd->panel.type);
+//		return -EINVAL;
+//	}
 
 	if (info->node != 0 || mfd->cont_splash_done)	/* primary */
 		if (mdp_fb_is_power_off(mfd))		/* suspended */
@@ -4218,13 +4218,13 @@ int mdp4_overlay_commit(struct fb_info *info)
 		goto mdp4_overlay_commit_exit;
 	}
 
-	if (mdp_fb_is_power_off(mfd)) {
+//	if (mdp_fb_is_power_off(mfd)) {
 		/* suspended */
-		pr_err("%s,%d fb_%d panel type %d is suspended\n", __func__,
-				__LINE__, mfd->index, mfd->panel.type);
-		ret = -EINVAL;
-		goto mdp4_overlay_commit_exit;
-	}
+//		pr_err("%s,%d fb_%d panel type %d is suspended\n", __func__,
+//				__LINE__, mfd->index, mfd->panel.type);
+//		ret = -EINVAL;
+//		goto mdp4_overlay_commit_exit;
+//	}
 
 	mixer = mfd->panel_info.pdest;	/* DISPLAY_1 or DISPLAY_2 */
 
