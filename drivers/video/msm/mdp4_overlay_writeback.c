@@ -850,11 +850,7 @@ static int mdp4_wfd_dequeue_update(struct msm_fb_data_type *mfd,
 	struct mdp4_overlay_pipe *pipe;
 	struct msmfb_writeback_data_list *node = NULL;
 
-<<<<<<< HEAD
-	if (mfd && mdp_fb_is_power_off(mfd))
-=======
-	if (!mfd || !mfd->panel_power_on)
->>>>>>> bd5460a... Resolved static analysis issues - set 3
+	if (!mfd || mdp_fb_is_power_off(mfd))
 		return -EPERM;
 
 	pr_debug("%s:+ mfd=%x\n", __func__, (int)mfd);
@@ -908,11 +904,7 @@ static void mdp4_wfd_queue_wakeup(struct msm_fb_data_type *mfd,
 			struct msmfb_writeback_data_list *node)
 {
 
-<<<<<<< HEAD
-	if (mfd && mdp_fb_is_power_off(mfd))
-=======
-	if (!mfd || !mfd->panel_power_on)
->>>>>>> bd5460a... Resolved static analysis issues - set 3
+	if (!mfd || !mdp_fb_is_power_off(mfd))
 		return;
 
 	if (node == NULL)
