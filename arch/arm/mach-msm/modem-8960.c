@@ -375,12 +375,6 @@ int system_shutdown_notifier(struct notifier_block *this,
 	return NOTIFY_DONE;
 }
 
-static struct notifier_block reboot_notifier = {
-	.notifier_call = system_reboot_notifier,
-	.next = NULL,
-	.priority = INT_MAX,
-};
-
 static struct notifier_block shutdown_notifier = {
 	.notifier_call = system_shutdown_notifier,
 	.next = NULL,
@@ -415,9 +409,6 @@ static int __init modem_8960_init(void)
 	int ret = 0;
 
 	if (soc_class_is_apq8064()) {
-		if (machine_is_apq8064_adp_2() || machine_is_apq8064_adp2_es2()
-		    || machine_is_apq8064_adp2_es2p5())
-			register_reboot_notifier(&reboot_notifier);
 		goto out;
 	}
 
